@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.adobe.cq.social:cq-socialcommunities-api:1.7.197">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/adobe/cq/social/cq-socialcommunities-api/1.7.197/cq-socialcommunities-api-1.7.197.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/adobe/cq/social/cq-socialcommunities-api/1.7.197/cq-socialcommunities-api-1.7.197-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/adobe/cq/social/cq-socialcommunities-api/1.7.197/cq-socialcommunities-api-1.7.197-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
