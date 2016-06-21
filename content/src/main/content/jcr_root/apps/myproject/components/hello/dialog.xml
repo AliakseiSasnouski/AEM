@@ -9,15 +9,27 @@
         <items jcr:primaryType="cq:WidgetCollection">
             <tab
                     jcr:primaryType="cq:Widget"
-                    title="Hello Tab"
+                    title="Image Tab"
                     bodyBorder="false"
                     xtype="panel">
-                <items jcr:primaryType="cq:WidgetCollection">
+                <!--<items jcr:primaryType="cq:WidgetCollection">
                     <message
-                            jcr:primaryType="cq:Widget"
-                            fieldLabel="Message to show"
+                            jcr:primaryType="nt:unstructured"
+                            fieldLabel="Image to show"
                             name="./message"
-                            xtype="textfield"/>
+                            xtype="pathfield"/>
+                </items>-->
+                <items jcr:primaryType="cq:WidgetCollection">
+                <firstimage
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="Image field"
+                        fileNameParameter="./firstimage/fileName"
+                        fileReferenceParameter="./firstimage/fileReference"
+                        height="{Long}200"
+                        name="./firstimage/file"
+                        title="First Image"
+                        width="{Long}200"
+                        xtype="html5smartimage"/>
                 </items>
             </tab>
         </items>

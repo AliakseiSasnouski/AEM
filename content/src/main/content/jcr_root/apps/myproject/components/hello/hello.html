@@ -4,10 +4,17 @@
 <sly data-sly-use.HelloComponent="com.mycompany.myproject.components.HelloComponent">
     <p class="message">
         <span>
-            ${properties.message}
+            <p>Image</p>
+            <img src = "/content/dam/projects/gov/cover"/>
+            <img src="${properties.firstimage.file.jcr:data}"/>
+            <img src="${HelloComponent.imagePath}"/>
         </span>
-        <hr>
-        ${HelloComponent.message}
+    <hr>
+
+    ${HelloComponent.message}
     </p>
+    <h1>${properties.title}</h1>
 </sly>
+
+
 

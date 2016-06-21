@@ -2,9 +2,9 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>My Project Package</comment>
-<entry key="createdBy">fedor.shokhalevich</entry>
+<entry key="createdBy">aliaksei.sasnouski</entry>
 <entry key="name">myproject-content</entry>
-<entry key="created">2016-06-15T11:09:10.862+0300</entry>
+<entry key="created">2016-06-21T11:31:51.817+0300</entry>
 <entry key="groupId">my-group-id</entry>
 <entry key="version">1.0-SNAPSHOT</entry>
 <entry key="requiresRoot">false</entry>
