@@ -1,19 +1,9 @@
 <sly data-sly-use.helloLib="${'/libs/granite/sightly/templates/clientlib.html'}"></sly>
 <meta data-sly-call="${helloLib.css @ categories='myproject.hello'}" data-sly-unwrap/>
 
-<sly data-sly-use.HelloComponent="com.mycompany.myproject.components.HelloComponent">
-    <p class="message">
-        <span>
-            <p>Image</p>
-            <img src = "/content/dam/projects/gov/cover"/>
-            <img src="${properties.firstimage.file.jcr:data}"/>
-            <img src="${HelloComponent.imagePath}"/>
-        </span>
-    <hr>
+<sly>
 
-    ${HelloComponent.message}
-    </p>
-    <h1>${properties.title}</h1>
+       <h1>${properties.titleMy}</h1>
 </sly>
 
 

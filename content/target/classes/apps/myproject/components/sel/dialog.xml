@@ -2,23 +2,11 @@
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
           jcr:primaryType="cq:Dialog"
           xtype="dialog"
-          width="{Long}700"
-          height="{Long}600">
+          width="{Long}800"
+          height="{Long}500">
     <items jcr:primaryType="cq:TabPanel"
            xtype="tabpanel">
         <items jcr:primaryType="cq:WidgetCollection">
-            <tab
-                    jcr:primaryType="cq:Widget"
-                    title="Image Tab"
-                    bodyBorder="false"
-                    xtype="panel">
-                <items jcr:primaryType="cq:WidgetCollection">
-                    <title
-                            jcr:primaryType="nt:unstructured"
-                            fieldLabel="Title"
-                            name="./titleMy"
-                            xtype="textfield"/>
-
 
                 <selection jcr:primaryType="cq:Widget"
                            fieldLabel="Select the tag"
@@ -52,20 +40,6 @@
                                 value="h6"/>
                     </options>
                 </selection>
-                </items>
-                <!--<items jcr:primaryType="cq:WidgetCollection">
-                <firstimage
-                        jcr:primaryType="cq:Widget"
-                        fieldLabel="Image field"
-                        fileNameParameter="./firstimage/fileName"
-                        fileReferenceParameter="./firstimage/fileReference"
-                        height="{Long}200"
-                        name="./firstimage/file"
-                        title="First Image"
-                        width="{Long}200"
-                        xtype="html5smartimage"/>
-                </items>-->
-            </tab>
 
         </items>
     </items>
