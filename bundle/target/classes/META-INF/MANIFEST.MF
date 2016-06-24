@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1466686354882
+Bnd-LastModified: 1466760715009
 Build-Jdk: 1.8.0_91
 Built-By: aliaksei.sasnouski
 Bundle-Description: Maven Multimodule project for My Project.
@@ -9,12 +9,12 @@ Bundle-SymbolicName: my-group-id.myproject-bundle
 Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
 Export-Package: com.mycompany.myproject;version="1.0.0",com.mycompany.my
- project.components;uses:="com.day.cq.wcm.api,com.adobe.cq.sightly,org.a
- pache.sling.api.resource";version="1.0.0.SNAPSHOT"
-Import-Package: com.adobe.cq.sightly;version="[2.3,3)",com.day.cq.wcm.ap
- i;version="[1.9,2)",com.mycompany.myproject;version="[1.0,2)",javax.ser
- vlet,org.apache.sling.api;version="[2.1,3)",org.apache.sling.api.reques
- t;version="[2.1,3)",org.apache.sling.api.resource;version="[2.1,3)",org
- .apache.sling.jcr.api;version="[2.1,3)",org.slf4j;version="[1.5,2)"
+ project.components;uses:="com.adobe.cq.sightly,org.apache.sling.api.res
+ ource,javax.jcr";version="1.0.0.SNAPSHOT"
+Import-Package: com.adobe.cq.sightly;version="[2.3,3)",com.mycompany.myp
+ roject;version="[1.0,2)",javax.jcr;version="[2.0,3)",javax.servlet,org.
+ apache.sling.api;version="[2.1,3)",org.apache.sling.api.request;version
+ ="[2.1,3)",org.apache.sling.api.resource;version="[2.1,3)",org.apache.s
+ ling.jcr.api;version="[2.1,3)",org.slf4j;version="[1.5,2)"
 Service-Component: OSGI-INF/serviceComponents.xml
 Tool: Bnd-1.50.0

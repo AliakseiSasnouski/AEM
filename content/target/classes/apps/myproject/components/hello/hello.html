@@ -1,9 +1,11 @@
 <sly data-sly-use.helloLib="${'/libs/granite/sightly/templates/clientlib.html'}"></sly>
 <meta data-sly-call="${helloLib.css @ categories='myproject.hello'}" data-sly-unwrap/>
 
-<sly>
+<sly data-sly-use.HelloComponent="com.mycompany.myproject.components.HelloComponent">
 
        <h1>${properties.titleMy}</h1>
+       ${HelloComponent.displayValue @ context='html'}
+       <p>${HelloComponent.selectValue}</p>
 </sly>
 
 
