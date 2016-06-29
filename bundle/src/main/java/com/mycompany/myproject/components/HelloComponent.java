@@ -8,6 +8,7 @@ import org.apache.sling.api.resource.ValueMap;
 
 public class HelloComponent extends WCMUsePojo {
 
+
     private String title;
     private String selectValue;
     private String displayValue;
@@ -15,7 +16,7 @@ public class HelloComponent extends WCMUsePojo {
     public void activate() throws Exception {
 
         Resource componentResource = getResource();
-        ValueMap vm = componentResource.adaptTo(ValueMap.class);
+        SlingModel slingModel = componentResource.adaptTo(SlingModel.class);
 
         //title = vm.get("titleMy", "");
         //selectValue = vm.get("selection","");
@@ -25,7 +26,10 @@ public class HelloComponent extends WCMUsePojo {
         title = node.getProperty("displayType").toString();
         String text = node.hasProperty("jcr:text") ? node.getProperty("jcr:text").getString() : "default text";
 */
-        Node node = getResource().adaptTo(Node.class);
+        title = slingModel.getTitleMy();
+
+        displayValue = this.getValue(slingModel.getDisplayType());
+        /*Node node = getResource().adaptTo(Node.class);
         if(node.hasProperty("titleMy")){
             title = node.getProperty("titleMy").getString();
         }
@@ -33,7 +37,7 @@ public class HelloComponent extends WCMUsePojo {
         if(node.hasProperty("displayType")){
             selectValue = node.getProperty("displayType").getString();
             displayValue = this.getValue(selectValue);
-        }
+        }*/
     }
 
     public String getTitle() {

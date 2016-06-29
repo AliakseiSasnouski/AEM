@@ -1,5 +1,6 @@
 com\mycompany\myproject\HelloService.class
 com\mycompany\myproject\impl\HelloServiceImpl.class
+com\mycompany\myproject\components\SlingModel.class
 com\mycompany\myproject\package-info.class
 com\mycompany\myproject\impl\filters\LoggingFilter.class
 com\mycompany\myproject\components\HelloComponent.class

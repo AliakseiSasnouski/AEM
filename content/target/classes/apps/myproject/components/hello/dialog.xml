@@ -21,7 +21,7 @@
 
                     <selection jcr:primaryType="cq:Widget"
                            fieldLabel="Select the tag"
-                           name="./displayType"
+                           selName="./displayType"
                            type="select"
                            xtype="selection">
                         <options jcr:primaryType="cq:WidgetCollection">

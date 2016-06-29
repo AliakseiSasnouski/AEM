@@ -1,6 +1,7 @@
 <sly data-sly-use.helloLib="${'/libs/granite/sightly/templates/clientlib.html'}"></sly>
 <meta data-sly-call="${helloLib.css @ categories='myproject.hello'}" data-sly-unwrap/>
 
+<sling:adaptTo adaptable="${resource}" adaptTo="org.apache.sling.models.it.models.MyModel" var="model"/>
 <sly data-sly-use.HelloComponent="com.mycompany.myproject.components.HelloComponent">
 
        <h1>${properties.titleMy}</h1>
