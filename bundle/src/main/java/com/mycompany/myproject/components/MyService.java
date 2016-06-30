@@ -1,51 +1,29 @@
 package com.mycompany.myproject.components;
+
+import com.day.cq.search.PredicateGroup;
+import com.day.cq.search.Query;
+import com.day.cq.search.QueryBuilder;
+import com.day.cq.search.result.Hit;
+import com.day.cq.search.result.SearchResult;
+import com.day.cq.wcm.api.Page;
+import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.Reference;
+import org.apache.felix.scr.annotations.Service;
+
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import aQute.bnd.annotation.component.Component;
-import com.day.cq.search.PredicateGroup;
-import com.day.cq.search.QueryBuilder;
-import com.day.cq.search.Query;
-import javax.jcr.Repository;
-
-import com.day.cq.search.result.Hit;
-import com.day.cq.search.result.SearchResult;
-import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.foundation.Search;
-import org.apache.felix.scr.annotations.Reference;
-import org.apache.felix.scr.annotations.Service;
-import org.apache.sling.jcr.api.SlingRepository;
-
-
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.apache.sling.api.resource.Resource;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-
 //Sling Imports
-import org.apache.sling.api.resource.ResourceResolverFactory ;
-import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.resource.Resource;
-
-
 //AEM Tagging Imports
-import com.day.cq.tagging.JcrTagManagerFactory;
-import com.day.cq.tagging.Tag;
-import com.day.cq.tagging.TagManager;
-import com.day.cq.commons.RangeIterator ;
-import sun.plugin.dom.core.Document;
-import sun.plugin.dom.core.Element;
 
 
-@Service
-@Component
+@Component(
+        label = "MyService"
+)
+@Service({MyService.class})
 public class MyService implements SampleService {
 
     @Reference

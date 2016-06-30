@@ -107,6 +107,7 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>my-group-id.myproject-bundle</Bundle-SymbolicName>
+                        <Sling-Model-Packages>my-group-id.myproject-bundle.components</Sling-Model-Packages>
                     </instructions>
                 </configuration>
             </plugin>

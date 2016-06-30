@@ -1,25 +1,16 @@
 package com.mycompany.myproject.components;
 
 import com.adobe.cq.sightly.WCMUsePojo;
-import com.day.cq.wcm.api.Page;
-import javax.jcr.Node;
-
-import org.apache.felix.scr.annotations.Reference;
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolverFactory;
-import org.apache.sling.api.resource.ValueMap;
 
 public class HelloComponent extends WCMUsePojo {
-
-    @Reference
-    private MyService m;
 
     private String title;
     private String selectedValue;
     private String displayValue;
     @Override
     public void activate() throws Exception {
-
+    MyService ms = getSlingScriptHelper().getService(MyService.class);
+        System.out.print("");
         //Resource componentResource = getResource();
         //lingModel slingModel = componentResource.adaptTo(SlingModel.class);
 
@@ -44,7 +35,7 @@ public class HelloComponent extends WCMUsePojo {
             displayValue = this.getValue(selectValue);
         }*/
 
-        selectedValue = m.getResultTitle(0);
+        selectedValue = ms.getResultTitle(0);
     }
 
     public String getTitle() {
