@@ -69,7 +69,8 @@ public class MyService implements SampleService {
         predicates.put("path", "/content/myproject");
         predicates.put("type", "cq:Page");
         predicates.put("property", "jcr:content/cq:tags");
-        predicates.put("property.operation", "exists");
+        predicates.put("property.value", "myTag:simpleTag");
+        predicates.put("property.operation", "equals");
         predicates.put("p.limit", "10");
 
         Query query = null;
@@ -80,6 +81,8 @@ public class MyService implements SampleService {
 
         for(Hit hit : query.getResult().getHits()) {
             try {
+
+
                 title.add(hit.getTitle());
             } catch (RepositoryException e) {
                 e.printStackTrace();

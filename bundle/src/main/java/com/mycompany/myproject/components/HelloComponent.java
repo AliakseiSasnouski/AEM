@@ -4,9 +4,11 @@ import com.adobe.cq.sightly.WCMUsePojo;
 import org.apache.felix.scr.annotations.Reference;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HelloComponent extends WCMUsePojo {
 
+    List<String> arr;
     private String title;
     private String selectedValue;
     private String displayValue;
@@ -39,8 +41,9 @@ public class HelloComponent extends WCMUsePojo {
             selectValue = node.getProperty("displayType").getString();
             displayValue = this.getValue(selectValue);
         }*/
+        arr = ms.getTagCount();
 
-        ArrayList<String> arr = ms.getTagCount();
+
 
         System.out.print("uyyuiuyyi");
     }
@@ -49,6 +52,7 @@ public class HelloComponent extends WCMUsePojo {
         return title;
     }
 
+    public List<String> getArr() {return arr;}
     public String getSelectValue() {return selectedValue;}
 
     private String getValue(String tag) {

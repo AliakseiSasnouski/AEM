@@ -7,8 +7,11 @@
        ${HelloComponent.displayValue @ context='html'}
        <p>${HelloComponent.selectValue}</p>
 
+       <ul data-sly-list="${HelloComponent.arr}">
 
-       <h1>${HelloComponent.selectedValue}</h1>
+              <li>${item}</ul>
+
+       </ul>
 </sly>
 
 
