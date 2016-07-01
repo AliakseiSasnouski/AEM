@@ -47,6 +47,7 @@ public class MyService implements SampleService {
 
 
 
+
         ResourceResolver resourceResolver = null;
         try {
             resourceResolver = resolverFactory.getAdministrativeResourceResolver(null);
