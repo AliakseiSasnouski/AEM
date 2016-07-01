@@ -4,20 +4,24 @@ import com.day.cq.search.PredicateGroup;
 import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
-import com.day.cq.search.result.SearchResult;
-import com.day.cq.wcm.api.Page;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Reference;
 import org.apache.felix.scr.annotations.Service;
+import org.apache.sling.api.resource.LoginException;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import javax.jcr.query.QueryManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-//Sling Imports
-//AEM Tagging Imports
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @Component(
@@ -26,44 +30,64 @@ import java.util.Map;
 @Service({MyService.class})
 public class MyService implements SampleService {
 
+
+    protected final Logger log = LoggerFactory.getLogger(this.getClass());
+
     @Reference
     QueryBuilder builder;
 
 
+    @Reference
+    private ResourceResolverFactory resolverFactory;
+
     private Session session;
 
-    private ArrayList<String> title;
 
-    public void getTagCount() {
-        String fulltextSearchTerm = "Geometrixx";
+    public ArrayList<String> getTagCount()  {
 
-        Map<String, String> map = new HashMap<String, String>();
 
-        map.put("path", "/content");
-        map.put("type", "cq:tags");
-        map.put("p.offset", "0");
-        map.put("p.limit", "20");
 
-        Query query = builder.createQuery(PredicateGroup.create(map), session);
-        query.setStart(0);
-        query.setHitsPerPage(20);
+        ResourceResolver resourceResolver = null;
+        try {
+            resourceResolver = resolverFactory.getAdministrativeResourceResolver(null);
+        } catch (LoginException e) {
+            e.printStackTrace();
+        }
 
-        SearchResult searchResult = query.getResult();
 
-        for (Hit hit : searchResult.getHits()) {
+        ArrayList<String> title = new ArrayList<String>();
 
-            Page page = null;
+        QueryBuilder queryBuilder = null;
+        if (resourceResolver != null) {
+            queryBuilder = resourceResolver.adaptTo(QueryBuilder.class);
+        }
+        if (resourceResolver != null) {
+            session = resourceResolver.adaptTo(Session.class);
+        }
+
+        Map<String, String> predicates = new HashMap<String, String>();
+        predicates.put("path", "/content/myproject");
+        predicates.put("type", "cq:Page");
+        predicates.put("property", "jcr:content/cq:tags");
+        predicates.put("property.operation", "exists");
+        predicates.put("p.limit", "10");
+
+        Query query = null;
+        if (queryBuilder != null) {
+            query = queryBuilder.createQuery(PredicateGroup.create(predicates), session);
+        }
+        Resource current;
+
+        for(Hit hit : query.getResult().getHits()) {
             try {
-                page = hit.getResource().adaptTo(Page.class);
+                title.add(hit.getTitle());
             } catch (RepositoryException e) {
                 e.printStackTrace();
             }
 
-            title.add(page.getTitle());
-        }
-    }
 
-    public String getResultTitle(int index){
-        return title.get(index);
+        }
+        session.logout();
+        return title;
     }
 }
