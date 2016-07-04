@@ -4,9 +4,10 @@ import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.ResourceResolver;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface SampleService {
 
-    public ArrayList<String> getTagCount() throws LoginException;
+    public List<String> getTagCount() throws LoginException;
 
 }

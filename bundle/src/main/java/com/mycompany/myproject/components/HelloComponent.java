@@ -16,7 +16,7 @@ public class HelloComponent extends WCMUsePojo {
     private MyService ms;
     @Override
     public void activate() throws Exception {
-    MyService ms = getSlingScriptHelper().getService(MyService.class);
+
         //System.out.print("");
         //Resource componentResource = getResource();
         //lingModel slingModel = componentResource.adaptTo(SlingModel.class);
@@ -41,9 +41,10 @@ public class HelloComponent extends WCMUsePojo {
             selectValue = node.getProperty("displayType").getString();
             displayValue = this.getValue(selectValue);
         }*/
-        arr = ms.getTagCount();
+      //  arr = ms.getTagCount();
 
 
+       // int n = arr.size();
 
 
         System.out.print("uyyuiuyyi");
@@ -53,7 +54,11 @@ public class HelloComponent extends WCMUsePojo {
         return title;
     }
 
-    public List<String> getArr() {return arr;}
+    public List<String> getArr() {
+        MyService ms = getSlingScriptHelper().getService(MyService.class);
+        List<String> result = ms.getTagCount();
+        return result;
+    }
     public String getSelectValue() {return selectedValue;}
 
     private String getValue(String tag) {

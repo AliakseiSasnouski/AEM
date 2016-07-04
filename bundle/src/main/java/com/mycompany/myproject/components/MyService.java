@@ -1,9 +1,8 @@
 package com.mycompany.myproject.components;
 
-import com.day.cq.search.PredicateGroup;
-import com.day.cq.search.Query;
+import com.day.cq.commons.RangeIterator;
 import com.day.cq.search.QueryBuilder;
-import com.day.cq.search.result.Hit;
+import com.day.cq.tagging.TagManager;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Reference;
 import org.apache.felix.scr.annotations.Service;
@@ -12,12 +11,9 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
 
-import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import javax.jcr.query.QueryManager;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 
 import org.slf4j.Logger;
@@ -43,10 +39,9 @@ public class MyService implements SampleService {
     private Session session;
 
 
-    public ArrayList<String> getTagCount()  {
+    public List<String> getTagCount()  {
 
-
-
+        List<String> pathListReturn = new ArrayList<String>();
 
         ResourceResolver resourceResolver = null;
         try {
@@ -56,42 +51,17 @@ public class MyService implements SampleService {
         }
 
 
-        ArrayList<String> title = new ArrayList<String>();
-
-        QueryBuilder queryBuilder = null;
-        if (resourceResolver != null) {
-            queryBuilder = resourceResolver.adaptTo(QueryBuilder.class);
+        TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
+        RangeIterator<Resource> it = tagManager.find("catsTag:taskCat");
+        String path;
+        while (it.hasNext()) {
+            path = it.next().getPath();
+            int lastPath = path.indexOf("jcr:content");
+            String newPath = path.substring(0, lastPath + "jcr:content".length());
+            path = newPath + "/renditions/cq5dam.thumbnail.100.100.png";
+            pathListReturn.add(path);
         }
-        if (resourceResolver != null) {
-            session = resourceResolver.adaptTo(Session.class);
-        }
 
-        Map<String, String> predicates = new HashMap<String, String>();
-        predicates.put("path", "/content/myproject");
-        predicates.put("type", "cq:Page");
-        predicates.put("property", "jcr:content/cq:tags");
-        predicates.put("property.value", "myTag:simpleTag");
-        predicates.put("property.operation", "equals");
-        predicates.put("p.limit", "10");
-
-        Query query = null;
-        if (queryBuilder != null) {
-            query = queryBuilder.createQuery(PredicateGroup.create(predicates), session);
-        }
-        Resource current;
-
-        for(Hit hit : query.getResult().getHits()) {
-            try {
-
-
-                title.add(hit.getTitle());
-            } catch (RepositoryException e) {
-                e.printStackTrace();
-            }
-
-
-        }
-        session.logout();
-        return title;
+        return pathListReturn;
     }
 }
