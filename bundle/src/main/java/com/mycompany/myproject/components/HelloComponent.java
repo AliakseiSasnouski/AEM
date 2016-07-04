@@ -45,6 +45,7 @@ public class HelloComponent extends WCMUsePojo {
 
 
 
+
         System.out.print("uyyuiuyyi");
     }
 
