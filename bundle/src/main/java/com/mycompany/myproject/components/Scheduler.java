@@ -64,7 +64,7 @@ public class Scheduler implements Runnable {
         while (it != null && it.hasNext()) {
             path = it.next().getPath();
             int lastPath = path.indexOf("jcr:content");
-            String newPath = path.substring(0, lastPath + "jcr:content".length());
+            String newPath = path.substring(0, lastPath);
             path = newPath ;
             try {
                 replicator.replicate(session, ReplicationActionType.ACTIVATE, path);
