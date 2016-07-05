@@ -59,7 +59,7 @@ public class Scheduler implements Runnable {
         }
 
         TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
-        RangeIterator<Resource> it = tagManager.find("catsTag:taskCat");
+        RangeIterator<Resource> it = tagManager.find(myParameter);
         String path;
         while (it != null && it.hasNext()) {
             path = it.next().getPath();
@@ -86,6 +86,5 @@ public class Scheduler implements Runnable {
 
     private void configure(final Map<String, Object> config) {
         myParameter = PropertiesUtil.toString(config.get(MY_PARAMETER), null);
-        logger.debug("configure: myParameter='{}''", myParameter);
     }
 }
