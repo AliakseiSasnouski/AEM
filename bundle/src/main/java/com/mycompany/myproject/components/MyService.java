@@ -54,7 +54,7 @@ public class MyService implements SampleService {
         TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
         RangeIterator<Resource> it = tagManager.find("catsTag:taskCat");
         String path;
-        while (it.hasNext()) {
+        while (it!=null && it.hasNext()) {
             path = it.next().getPath();
             int lastPath = path.indexOf("jcr:content");
             String newPath = path.substring(0, lastPath + "jcr:content".length());

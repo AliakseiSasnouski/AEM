@@ -1,6 +1,7 @@
 com\mycompany\myproject\HelloService.class
 com\mycompany\myproject\components\SlingModel.class
-com\mycompany\myproject\components\MyWorkflow.class
 com\mycompany\myproject\components\SampleService.class
-com\mycompany\myproject\components\HelloComponent.class
 com\mycompany\myproject\components\MyService.class
+com\mycompany\myproject\components\MyWorkflow.class
+com\mycompany\myproject\components\Scheduler.class
+com\mycompany\myproject\components\HelloComponent.class
