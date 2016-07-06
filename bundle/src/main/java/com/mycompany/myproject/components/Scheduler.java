@@ -73,7 +73,7 @@ public class Scheduler implements Runnable {
             }
         }
 
-        System.out.println("Yes!");
+        //System.out.println("Yes!");
 
     }
 

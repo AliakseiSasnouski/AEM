@@ -56,7 +56,7 @@ public class HelloComponent extends WCMUsePojo {
 
     public List<String> getArr() {
         MyService ms = getSlingScriptHelper().getService(MyService.class);
-        List<String> result = ms.getTagCount();
+        List<String> result = ms.getTagCount("cat:cats");
         return result;
     }
     public String getSelectValue() {return selectedValue;}

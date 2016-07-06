@@ -39,7 +39,7 @@ public class MyService implements SampleService {
     private Session session;
 
 
-    public List<String> getTagCount()  {
+    public List<String> getTagCount(String tagName)  {
 
         List<String> pathListReturn = new ArrayList<String>();
 
@@ -52,7 +52,7 @@ public class MyService implements SampleService {
 
 
         TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
-        RangeIterator<Resource> it = tagManager.find("catsTag:taskCat");
+        RangeIterator<Resource> it = tagManager.find(tagName);
         String path;
         while (it!=null && it.hasNext()) {
             path = it.next().getPath();

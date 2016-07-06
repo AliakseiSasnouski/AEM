@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface SampleService {
 
-    public List<String> getTagCount() throws LoginException;
+    public List<String> getTagCount(String tagName) throws LoginException;
 
 }
