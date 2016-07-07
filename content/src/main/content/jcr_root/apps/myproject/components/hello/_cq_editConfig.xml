@@ -5,4 +5,21 @@
           cq:dialogMode="floating"
           cq:disableTargeting="true"
           jcr:primaryType="cq:EditConfig">
+    <cq:inplaceEditing
+            jcr:primaryType="cq:InplaceEditingConfig"
+            active="{Boolean}true"
+            editorType="text">
+        <config jcr:primaryType="nt:unstructured">
+            <rtePlugins jcr:primaryType="nt:unstructured">
+
+                <edit
+                        jcr:primaryType="nt:unstructured"
+                        defaultPasteMode="plaintext"
+                        features="[cut,copy,paste-plaintext]"
+                        stripHtmlTags="{Boolean}true"/>
+
+
+            </rtePlugins>
+        </config>
+    </cq:inplaceEditing>
 </jcr:root>
