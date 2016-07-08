@@ -19,9 +19,9 @@
                             name="./titleMy"
                             xtype="textfield"/>
 
-                    <selection jcr:primaryType="cq:Widget"
+                    <selection jcr:primaryType="nt:unstructured"
                            fieldLabel="Select the tag"
-                           selName="./displayType"
+                           name="./displayType"
                            type="select"
                            xtype="selection">
                         <options jcr:primaryType="cq:WidgetCollection">
@@ -51,30 +51,9 @@
                                     value="h6"/>
                          </options>
                     </selection>
-                </items>
-
-                <!--<items jcr:primaryType="cq:WidgetCollection">
-                <firstimage
-                        jcr:primaryType="cq:Widget"
-                        fieldLabel="Image field"
-                        fileNameParameter="./firstimage/fileName"
-                        fileReferenceParameter="./firstimage/fileReference"
-                        height="{Long}200"
-                        name="./firstimage/file"
-                        title="First Image"
-                        width="{Long}200"
-                        xtype="html5smartimage"/>
-                </items>-->
-            </tab>
-            <tab1
-                    jcr:primaryType="cq:Widget"
-                    anchor="100%"
-                    title="Text"
-                    xtype="panel">
-                <items jcr:primaryType="cq:WidgetCollection">
                     <text
                             jcr:primaryType="cq:Widget"
-                            hideLabel="{Boolean}true"
+                            fieldLabel="Description"
                             name="./text"
                             xtype="richtext">
                         <rtePlugins jcr:primaryType="nt:unstructured">
@@ -129,9 +108,23 @@
                             </links>
                         </rtePlugins>
                     </text>
-
                 </items>
-            </tab1>
+
+                <!--<items jcr:primaryType="cq:WidgetCollection">
+                <firstimage
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="Image field"
+                        fileNameParameter="./firstimage/fileName"
+                        fileReferenceParameter="./firstimage/fileReference"
+                        height="{Long}200"
+                        name="./firstimage/file"
+                        title="First Image"
+                        width="{Long}200"
+                        xtype="html5smartimage"/>
+                </items>-->
+
+
+            </tab>
 
         </items>
 

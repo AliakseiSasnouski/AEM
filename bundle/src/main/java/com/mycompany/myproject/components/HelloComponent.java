@@ -2,9 +2,14 @@ package com.mycompany.myproject.components;
 
 import com.adobe.cq.sightly.WCMUsePojo;
 import org.apache.felix.scr.annotations.Reference;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
+import org.apache.sling.api.resource.ValueMap;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.jcr.Node;
 
 public class HelloComponent extends WCMUsePojo {
 
@@ -14,40 +19,23 @@ public class HelloComponent extends WCMUsePojo {
     private String displayValue;
     @Reference
     private MyService ms;
+    @Reference
+    private ResourceResolverFactory resourceResolverFactory;
     @Override
     public void activate() throws Exception {
 
-        //System.out.print("");
-        //Resource componentResource = getResource();
-        //lingModel slingModel = componentResource.adaptTo(SlingModel.class);
 
-        //title = vm.get("titleMy", "");
-        //selectValue = vm.get("selection","");
+        String path = getResource().getPath();
+        ResourceResolver resourceResolver = getResourceResolver();
+        Resource res = resourceResolver.getResource(path);
+        Resource resC = res.getChild(path + "/selection");
+        ValueMap mapResource = res.adaptTo(ValueMap.class);
 
-        /*selectValue = vm.get("displayType", "");
-        Node node = getCurrentPage().getContentResource("displayType").adaptTo(Node.class);
-        title = node.getProperty("displayType").toString();
-        String text = node.hasProperty("jcr:text") ? node.getProperty("jcr:text").getString() : "default text";
-*/
-        //title = slingModel.getTitleMy();
-        //displayValue = this.getValue(slingModel.getDisplayType());
+        title = mapResource.get("titleMy").toString();
 
-        /*Node node = getResource().adaptTo(Node.class);
-        if(node.hasProperty("titleMy")){
-            title = node.getProperty("titleMy").getString();
-        }
+        selectedValue = mapResource.get("displayType").toString();
+        displayValue = this.getValue(selectedValue);
 
-        if(node.hasProperty("displayType")){
-            selectValue = node.getProperty("displayType").getString();
-            displayValue = this.getValue(selectValue);
-        }*/
-      //  arr = ms.getTagCount();
-
-
-       // int n = arr.size();
-
-
-        System.out.print("uyyuiuyyi");
     }
 
     public String getTitle() {
@@ -59,7 +47,7 @@ public class HelloComponent extends WCMUsePojo {
         List<String> result = ms.getTagCount("cat:cats");
         return result;
     }
-    public String getSelectValue() {return selectedValue;}
+    public String getSelectedValueValue() {return selectedValue;}
 
     private String getValue(String tag) {
         String value = "<" + tag + ">" + this.getTitle() + "</" + tag + ">";

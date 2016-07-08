@@ -3,12 +3,11 @@
 
 <sly data-sly-use.HelloComponent="com.mycompany.myproject.components.HelloComponent">
 
-
-       <!--<h1>${properties.titleMy}</h1>
+       <p>${HelloComponent.selectedValue}</p>
        ${HelloComponent.displayValue @ context='html'}
-       <p>${HelloComponent.selectValue}</p>
 
-       <ul data-sly-list="${HelloComponent.arr}">
+
+       <!--<ul data-sly-list="${HelloComponent.arr}">
 
               <li> <img src="${item}"/></ul>
 
